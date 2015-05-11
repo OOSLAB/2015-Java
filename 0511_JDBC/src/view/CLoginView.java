@@ -1,7 +1,6 @@
 package view;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 import control.CLoginControl;
@@ -29,7 +28,7 @@ public class CLoginView extends CView {
 					((CLoginControl)this.getControl()).login(vLogin);
 			System.out.println("login result: "+vUser.getName());
 			return vUser;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;

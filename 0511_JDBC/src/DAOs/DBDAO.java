@@ -6,21 +6,21 @@ import java.sql.*;
 import entity.CEntity;
 
 public class DBDAO implements IDAO{
-	private final static String URL = "jdbc:mysql://localhost:3306/java";
-	private final static String ID ="root";
+	private final static String DRIVER = "com.mysql.jdbc.Driver";
+	private final static String URL = "jdbc:mysql://localhost:3306/javalms";
+	private final static String ID ="java";
 	private final static String PASSWORD = "mju12345";
 	
-	private Connection conn;
-	private Statement stmt;
-	private ResultSet rs;
-	private String mode;
+	private Connection connection;
+	private Statement statement;
+	private ResultSet resultSet;
 	private String tableName;
 	
 	public DBDAO() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(DRIVER);
 			try {
-				conn = DriverManager.getConnection(URL,ID,PASSWORD);
+				connection = DriverManager.getConnection(URL,ID,PASSWORD);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,8 +37,8 @@ public class DBDAO implements IDAO{
 		this.tableName = name;
 
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select* from "+this.tableName);
+			statement = connection.createStatement();
+			rs = statement.executeQuery("select* from "+this.tableName);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,7 +53,7 @@ public class DBDAO implements IDAO{
 		}
 		try {
 			conn.close();
-			stmt.close();
+			statement.close();
 			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import entity.CUser;
 import entity.VLogin;
@@ -11,7 +12,7 @@ import exception.UserIDNotFoundException;
 public class CLoginControl extends CControl {
 	public VUser login(VLogin vLogin) 
 			throws UserIDNotFoundException, 
-					PasswordNotMatchException, IOException {
+					PasswordNotMatchException, IOException, SQLException {
 		// TODO Auto-generated method stub
 		VUser vUser = new VUser();
 		CUser user = new CUser();
